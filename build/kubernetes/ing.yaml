@@ -1,0 +1,15 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: eat
+  name: eat-ing
+spec:
+  rules:
+  - host: eat.cescoferraro.xyz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: eat-svc
+          servicePort: 4000

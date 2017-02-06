@@ -1,0 +1,23 @@
+meta:
+    project: eat
+    default: production
+    include: ['./build/dobi/jobs.yaml',
+              './build/dobi/images.yaml',
+              './build/dobi/watch.yaml']
+
+
+env=vars:
+    variables:
+      - FRONTEND_VERSION=0.0.1
+
+mount=source:
+    bind: .
+    path: /srv/eat
+
+
+
+
+
+
+
+

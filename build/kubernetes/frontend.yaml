@@ -1,0 +1,23 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: eat
+  name: eat-deploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      namespace: eat
+      labels:
+        name: eat-pods
+    spec:
+      containers:
+        - image: cescoferraro/eat:0.0.1
+          imagePullPolicy: Always
+          name: frontend
+          env:
+          - name: KUBERNETES
+            value: "true"
+          - name: NODE_ENV
+            value: "production"
