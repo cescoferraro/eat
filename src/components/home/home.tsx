@@ -12,9 +12,17 @@ import {PeopleComponent} from "../dashboard/people/people.component";
 import {BlockQuote, Cite, Deck, Heading, ListItem, List, Quote, Slide, Text} from "spectacle";
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
+import {App} from "../general/general";
 declare let global, firebase, require, window: any;
 let css = require('./css/home.pcss');
 
+let defaultAPP: App = {
+    title: "WEAREEAT",
+    subtitle: "WE ROCK YOUR WORLD!",
+    author: "WE ROCK YOUR WORLD!",
+    quote: "WE ROCK YOUR WORLD!",
+    url: "WE ROCK YOUR WORLD!",
+};
 
 class HomeComponent extends React.Component<any, any> {
     firebaseRef;
@@ -22,15 +30,12 @@ class HomeComponent extends React.Component<any, any> {
     base;
     appRef;
     postsRef;
-    usersRef;
+    usersRef;quote
     static contextTypes = {router: React.PropTypes.object};
     state = {
         posts: [],
         users: [],
-        app: {
-            title: "WEAREEAT",
-            subtitle: "WE ROCK YOUR WORLD!",
-        }
+        app: defaultAPP
     };
 
     componentDidMount() {
@@ -113,8 +118,8 @@ class HomeComponent extends React.Component<any, any> {
                 </Slide>
                 <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
                     <BlockQuote>
-                        <Quote>Example Quote</Quote>
-                        <Cite>Author</Cite>
+                        <Quote>{this.state.app.quote}</Quote>
+                        <Cite>{this.state.app.author}</Cite>
                     </BlockQuote>
                 </Slide>
             </Deck>

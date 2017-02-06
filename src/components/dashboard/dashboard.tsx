@@ -8,6 +8,7 @@ import FlatButton from "material-ui/FlatButton";
 import TabsExampleSwipeable from "./tabs";
 import {PostList} from "./post/post.list";
 import {PeopleList} from "./people/people.list";
+import {GeneralTab} from "../general/general";
 declare let global, firebase, require, window: any;
 let css = require('./css/dashboard.pcss');
 
@@ -45,6 +46,7 @@ class Dashboard extends React.Component<any, any> {
                     <TabsExampleSwipeable>
                         <PostList></PostList>
                         <PeopleList></PeopleList>
+                        <GeneralTab></GeneralTab>
                     </TabsExampleSwipeable>
 
                 </div>
