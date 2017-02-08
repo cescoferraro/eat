@@ -22,18 +22,18 @@ class TabsExampleSwipeable extends React.Component<any,any> {
 
     render() {
         return (
-            <div id="tabs">
+            <div id="tabs" className={css.container}>
                 <Tabs
                     className={css.tabs}
                     onChange={this.handleChange.bind(this)}
                     value={this.state.slideIndex}>
-                    <Tab icon={<FaceIcon />} label="PEOPLE" value={0}/>
 
                     <Tab
                         icon={<InboxIcon />}
                         label="POSTS"
-                        value={1}
+                        value={0}
                     />
+                    <Tab icon={<FaceIcon />} label="PEOPLE" value={1}/>
 
                     <Tab
                         icon={<SettingsIcon />}

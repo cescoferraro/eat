@@ -6,7 +6,7 @@ import IconButton from "material-ui/IconButton";
 import Pizza from "material-ui/svg-icons/maps/local-pizza";
 import FlatButton from "material-ui/FlatButton";
 import TabsExampleSwipeable from "./tabs";
-import {PostList} from "./post/post.list";
+import {PostList} from "./post/post.tab";
 import {PeopleList} from "./people/people.list";
 import {GeneralTab} from "../general/general";
 declare let global, firebase, require, window: any;

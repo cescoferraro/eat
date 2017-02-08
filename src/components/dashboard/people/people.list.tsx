@@ -93,7 +93,7 @@ class PeopleListComponent extends React.Component<any, any> {
 
     render() {
         console.log(this.state);
-        return <div>
+        return <div className={css.container}>
 
 
             <form className={css.postForm} onSubmit={this.createPost.bind(this)}>
@@ -104,6 +104,7 @@ class PeopleListComponent extends React.Component<any, any> {
                     placeholder={"POST TITLE"}
                     type="text"
                     id="name"
+                    floatingLabelText="Name"
                     defaultValue={this.state.template.name}
                     onChange={this.handleNameChange.bind(this)}
                     name="name"
@@ -113,6 +114,7 @@ class PeopleListComponent extends React.Component<any, any> {
                     placeholder={"email"}
                     type="email"
                     id="email"
+                    floatingLabelText="Floating Label Text"
                     defaultValue={this.state.template.email}
                     onChange={this.handleEmailChange.bind(this)}
                     name="email"
@@ -123,6 +125,7 @@ class PeopleListComponent extends React.Component<any, any> {
                     placeholder={"job"}
                     type="text"
                     id="job"
+                    floatingLabelText="Job Title"
                     defaultValue={this.state.template.job}
                     onChange={this.handleJobChange.bind(this)}
                     name="job"
@@ -133,18 +136,21 @@ class PeopleListComponent extends React.Component<any, any> {
                     placeholder={"avatar"}
                     type="text"
                     id="avatar"
+                    floatingLabelText="Avatar Url"
                     defaultValue={this.state.template.avatar}
                     onChange={this.handleAvatarChange.bind(this)}
                     name="avatar"
                 />
 
-                <RaisedButton type="submit">
+                <RaisedButton
+                    secondary={true}
+                    type="submit">
                     Send Post
                 </RaisedButton>
             </form>
 
             <RaisedButton
-
+                primary={true}
                 onClick={this.format.bind(this)}
                 fullWidth={true}
                 type="submit">
@@ -152,8 +158,8 @@ class PeopleListComponent extends React.Component<any, any> {
             </RaisedButton>
 
             {/*//  Show All Post!*/}
-            {this.state.users.map((people: People) => (
-                <PeopleComponent people={people} key={Math.random()}/>))}
+            {/*{this.state.users.map((people: People) => (*/}
+            {/*<PeopleComponent people={people} key={Math.random()}/>))}*/}
         </div >
     }
 

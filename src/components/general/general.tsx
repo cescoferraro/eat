@@ -86,6 +86,7 @@ class GeneralTabComponent extends React.Component<any, any> {
                     placeholder={"title"}
                     type="text"
                     id="title"
+                    floatingLabelText="Title"
                     value={this.state.app.title}
                     onChange={this.handleTitleChange.bind(this)}
                     name="title"
@@ -95,6 +96,7 @@ class GeneralTabComponent extends React.Component<any, any> {
                     placeholder={"subtitle"}
                     type="text"
                     id="subtitle"
+                    floatingLabelText="Subtitle"
                     value={this.state.app.subtitle}
                     onChange={this.handleSubTitleChange.bind(this)}
                     name="subtitle"
@@ -105,6 +107,7 @@ class GeneralTabComponent extends React.Component<any, any> {
                     placeholder={"url"}
                     type="text"
                     id="url"
+                    floatingLabelText="Url"
                     value={this.state.app.url}
                     onChange={this.handleUrlChange.bind(this)}
                     name="url"
@@ -114,6 +117,7 @@ class GeneralTabComponent extends React.Component<any, any> {
                     placeholder={"quote"}
                     type="text"
                     id="quote"
+                    floatingLabelText="Quote"
                     value={this.state.app.quote}
                     onChange={this.handleQuoteChange.bind(this)}
                     name="quote"
@@ -123,16 +127,12 @@ class GeneralTabComponent extends React.Component<any, any> {
                     placeholder={"author"}
                     type="text"
                     id="author"
+                    floatingLabelText="Author"
                     value={this.state.app.author}
                     onChange={this.handleAuthorChange.bind(this)}
                     name="author"
                 />
             </form>
-            <h2>{this.state.app.title}</h2>
-            <h2>{this.state.app.subtitle}</h2>
-            <h2>{this.state.app.url}</h2>
-            <h2>{this.state.app.quote}</h2>
-            <h2>{this.state.app.author}</h2>
 
 
         </div >
