@@ -1,16 +1,8 @@
 import * as React from "react";
 import withStyles from "isomorphic-style-loader/lib/withStyles";
+import TextField from "material-ui/TextField";
 let css = require('./general.pcss');
 
-import TextField from "material-ui/TextField";
-
-export type App ={
-    subtitle: string;
-    title: string;
-    url: string;
-    quote: string;
-    author: string;
-}
 
 let defaultApp: App = {
     subtitle: "sdkjfnsdf",
@@ -20,8 +12,8 @@ let defaultApp: App = {
     author: "author",
 };
 
-
-class GeneralTabComponent extends React.Component<any, any> {
+@withStyles(css)
+export class GeneralTab extends React.Component<any, any> {
     firebase;
     ref;
     state = {
@@ -141,4 +133,3 @@ class GeneralTabComponent extends React.Component<any, any> {
 }
 
 
-export const GeneralTab = withStyles(css)(GeneralTabComponent);

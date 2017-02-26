@@ -1,4 +1,4 @@
-export type People = {
+type People = {
     name: string;
     email: string;
     avatar: string;

@@ -4,7 +4,7 @@ job=dev:
     use: dev-image
     mounts: [source]
     interactive: true
-    command: node hot.js
+    command: concurrently "node hot.js"
     depends: [vars]
     env:
       - "NODE_ENV=development"

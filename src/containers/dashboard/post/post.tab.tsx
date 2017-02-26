@@ -8,7 +8,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from "mat
 import AutoScale from "react-auto-scale";
 import * as Chance from "chance";
 import {PostComponent} from "./post.component";
-import {Post} from "./post.d";
 import Utils from "../../../shared/utils";
 let css = require('../css/dashboard.pcss');
 declare const firebase: any;

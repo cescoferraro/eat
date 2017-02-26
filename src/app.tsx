@@ -1,22 +1,23 @@
 import * as React from "react";
-import Match from "react-router/Match";
-import Miss from "react-router/Miss";
 import {createAsyncComponent} from "react-async-component";
-import {NoMatch} from "./components/404/index";
-import Login from "./components/login/login";
-import Dashboard from "./components/dashboard/dashboard";
-import {AsyncHome} from "./components/home/index";
+import {Route, IndexRoute, Router, Switch, Link} from "react-router-dom";
+import {AsyncHome} from "./containers/home/async";
+import {AsyncLogin} from "./containers/login/async";
+import {AsyncDashboard} from "./containers/dashboard/async";
 
 
-export default (userAgent) => {
+export const App = ({userAgent}) => {
     return (
         <div>
+            <Route exact path="/" component={AsyncHome(userAgent)}/>
+            <Switch>
+                <Route exact path="/admin" component={AsyncLogin(userAgent)}/>
+                <Route exact path="/login" component={AsyncLogin(userAgent)}/>
+                <Route path="/dashboard" component={AsyncDashboard(userAgent)}/>
+            </Switch>
 
-
-            <Match exactly pattern="/" component={AsyncHome(userAgent)}/>
-            <Match exactly pattern="/admin" component={Login}/>
-            <Match exactly pattern="/dashboard" component={Dashboard}/>
-            <Miss component={NoMatch}/>
         </div>
     )
-}
+};
+
+

@@ -1,6 +1,4 @@
-import * as Chance from "chance"
-import {People} from "./people.d";
-
+import * as Chance from "chance";
 let chance = new Chance();
 
 

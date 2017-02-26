@@ -1,13 +1,12 @@
 import {createAsyncComponent} from "react-async-component";
 import * as React from "react";
-import {Spinner} from "../spinner/index";
+import {Spinner} from "../../components/spinner/index";
 
-export const AsyncHome = userAgent => createAsyncComponent({
+
+export const AsyncDashboard = userAgent => createAsyncComponent({
     resolve: () => new Promise(resolve =>
         require.ensure([], (require) => {
-            resolve(require("./home"));
-        }, "home.js")),
-    defer: true,
+            resolve(require("./dashboard").Dashboard);
+        }, "dashboard.js")),
     Loading: (prop) => <Spinner userAgent={userAgent}/>
 });
-

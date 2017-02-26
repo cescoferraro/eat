@@ -1,54 +1,33 @@
-declare const NODE_ENV, module, require, window: any;
+import {tag} from "./shared/tag";
 import * as React from "react";
-import SpotifyApp from "./app";
-import {AppContainer} from "react-hot-loader";
 import * as injectTapEventPlugin from "react-tap-event-plugin";
-import {render} from "react-dom";
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import {allReducers, allReducersInitial, createStoreWithFirebase} from "./reducers/index";
-import Router from "react-router/BrowserRouter";
-import WithStylesContext from "./shared/stylesComponent";
-import {StyleRoot} from "radium";
-import {withAsyncComponents} from "react-async-component";
-const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const theme = getMuiTheme({}, {userAgent: navigator.userAgent});
-const rootEl = document.getElementById("container");
-
-import * as firebase from "firebase"
-console.log(firebase);
-// const store = createStore(allReducers, allReducersInitial, reduxDevTools);
-const store = createStoreWithFirebase(allReducers, allReducersInitial, reduxDevTools);
-
+import {App} from "./app";
+import {Renderer} from "./render";
+import {unmountComponentAtNode} from "react-dom";
+declare const module, require: any;
 injectTapEventPlugin();
 
-const renderApp = NextApp => {
-    let app = <AppContainer>
-        <WithStylesContext onInsertCss={styles => styles._insertCss()}>
-            <MuiThemeProvider muiTheme={theme}>
-                <Provider store={store}>
-                    <Router>
 
-                        {NextApp}
-                    </Router>
-                </Provider>
-            </MuiThemeProvider>
-        </WithStylesContext>
-    </AppContainer>;
-    withAsyncComponents(app).then(({appWithAsyncComponents}) =>
-        render(appWithAsyncComponents, rootEl),
-    );
-};
-
-
-renderApp(SpotifyApp(navigator.userAgent));
-
+Renderer(App({userAgent: navigator.userAgent}));
 
 if (module.hot) {
-    module.hot.accept("./app.tsx", () => {
-        const NextApp = require("./app.tsx").default;
-        renderApp(NextApp(navigator.userAgent));
-    });
+    module.hot.accept(
+        [
+            "./store/store.tsx",
+            "./app.tsx",
+            "./render.tsx"
+        ]
+        , () => {
+            console.log("=======================");
+            console.log("client.tsx module");
+            console.log(module);
+            console.log("module hot");
+            console.log(module.hot);
+            console.log("=======================");
+            console.log("attempting to reload the app");
+            unmountComponentAtNode(tag);
+            const NextEatApp = require("./app.tsx").App;
+            const NewRenderer = require("./render.tsx").Renderer;
+            NewRenderer(NextEatApp({userAgent: navigator.userAgent}));
+        });
 }

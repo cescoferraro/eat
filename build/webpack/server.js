@@ -9,7 +9,8 @@ module.exports = {
 	output: {
 		path: require('path').join(__dirname, "../../www"),
 		filename: "[name].bundle.js",
-		libraryTarget: 'commonjs2'
+		libraryTarget: 'commonjs2',
+		publicPath: "/"
 	},
 	devtool: require("./extras").devtools,
 	stats: require("./extras").stats,

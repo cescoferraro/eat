@@ -4,7 +4,6 @@ import {PeopleComponent} from "./people.component";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import * as Chance from "chance";
-import {People} from "./people.d";
 import {peopleFake} from "./people.list.fake";
 let css = require('../css/dashboard.pcss');
 
