@@ -8,15 +8,18 @@ import {store} from "./store/store";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import WithStylesContext from "./shared/stylesComponent";
 import {BrowserRouter} from "react-router-dom";
+import {createBrowserHistory} from "history";
+import {ConnectedRouter} from "connected-react-router";
 
 export const Renderer = NextEatApp => {
+    const history = createBrowserHistory();
     let app = <AppContainer>
         <WithStylesContext onInsertCss={styles => styles._insertCss()}>
             <MuiThemeProvider muiTheme={getMuiTheme({userAgent: navigator.userAgent})}>
-                <Provider store={store()}>
-                    <BrowserRouter>
+                <Provider store={store(history)}>
+                    <ConnectedRouter history={history}>
                         {NextEatApp}
-                    </BrowserRouter>
+                    </ConnectedRouter>
                 </Provider>
             </MuiThemeProvider>
         </WithStylesContext>

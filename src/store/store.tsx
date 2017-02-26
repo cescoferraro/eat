@@ -3,6 +3,8 @@ import {createStore, applyMiddleware, compose} from "redux";
 import {reactReduxFirebase, firebaseStateReducer} from "react-redux-firebase";
 import {createEpicMiddleware} from "redux-observable";
 import {RootEpic} from "./epics";
+import {routerMiddleware, connectRouter} from "connected-react-router";
+
 
 declare let window, module: any;
 
@@ -21,12 +23,16 @@ const FirebaseStoreCreator = compose(
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 
 
-export const store = () => {
+export const store = (history) => {
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    let store = FirebaseStoreCreator(allReducers, {},
+    let store = FirebaseStoreCreator(
+        connectRouter(history)(allReducers),
+        {},
         composeEnhancers(
-            applyMiddleware(ReplacebleEpicMiddleware)
+            applyMiddleware(
+                routerMiddleware(history),
+                ReplacebleEpicMiddleware)
         ));
 
     if (module.hot) {
