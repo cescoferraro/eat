@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Tabs, Tab} from "material-ui/Tabs";
-import SwipeableViews from "react-swipeable-views";
 import FaceIcon from "material-ui/svg-icons/action/face.js";
 import InboxIcon from "material-ui/svg-icons/content/inbox.js";
 import SettingsIcon from "material-ui/svg-icons/action/settings.js";
@@ -20,6 +19,11 @@ class TabsExampleSwipeable extends React.Component<any,any> {
         })
     }
 
+    hello(par) {
+        console.log(par)
+
+    }
+
     render() {
         return (
             <div id="tabs" className={css.container}>
@@ -33,7 +37,13 @@ class TabsExampleSwipeable extends React.Component<any,any> {
                         label="POSTS"
                         value={0}
                     />
-                    <Tab icon={<FaceIcon />} label="PEOPLE" value={1}/>
+                    <Tab icon={<FaceIcon />}
+                         onClick={()=>{
+
+                             this.hello("jskdfnsd")
+                         }}
+                         label="PEOPLE"
+                         value={1}/>
 
                     <Tab
                         icon={<SettingsIcon />}
@@ -41,11 +51,7 @@ class TabsExampleSwipeable extends React.Component<any,any> {
                         value={2}
                     />
                 </Tabs>
-                <SwipeableViews
-                    index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange.bind(this)}>
-                    {this.props.children}
-                </SwipeableViews>
+                {this.props.children}
             </div>
         );
     }

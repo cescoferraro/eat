@@ -4,12 +4,14 @@ import {Route, IndexRoute, Router, Switch, Link} from "react-router-dom";
 import {AsyncHome} from "./containers/home/async";
 import {AsyncLogin} from "./containers/login/async";
 import {AsyncDashboard} from "./containers/dashboard/async";
+import {AsyncAppBar} from "./containers/shell/async";
 
 
 export const App = ({userAgent}) => {
     return (
         <div>
             <Route exact path="/" component={AsyncHome(userAgent)}/>
+            <Route component={AsyncAppBar(userAgent)}/>
             <Switch>
                 <Route exact path="/admin" component={AsyncLogin(userAgent)}/>
                 <Route exact path="/login" component={AsyncLogin(userAgent)}/>

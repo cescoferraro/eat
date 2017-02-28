@@ -4,6 +4,8 @@ import {reactReduxFirebase, firebaseStateReducer} from "react-redux-firebase";
 import {createEpicMiddleware} from "redux-observable";
 import {RootEpic} from "./epics";
 import {routerMiddleware, connectRouter} from "connected-react-router";
+import {initialJobReducer} from "../components/jobs/jobs.reducer";
+import {startup} from "./startup";
 
 
 declare let window, module: any;
@@ -28,18 +30,19 @@ export const store = (history) => {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     let store = FirebaseStoreCreator(
         connectRouter(history)(allReducers),
-        {},
+        startup,
         composeEnhancers(
             applyMiddleware(
                 routerMiddleware(history),
                 ReplacebleEpicMiddleware)
         ));
-
     if (module.hot) {
-        module.hot.accept(['./reducers.tsx', "./epics.tsx"], () => {
-            const nextRootEpic = require('./epics.tsx').RootEpic;
+        module.hot.accept(['./reducers.tsx'], () => {
             const nextRootReducer = require('./reducers.tsx').allReducers;
             store.replaceReducer(nextRootReducer);
+        });
+        module.hot.accept(["./epics.tsx"], () => {
+            const nextRootEpic = require('./epics.tsx').RootEpic;
             ReplacebleEpicMiddleware.replaceEpic(nextRootEpic);
         });
     }

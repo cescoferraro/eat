@@ -1,6 +1,5 @@
 import * as React from "react";
 import {ssrBehavior} from "react-md-spinner";
-import {FirebaseInit} from "../../shared/firebase.config";
 
 export let HEAD = ({title, css, userAgent}) => {
     let type = "text/javascript";
@@ -11,6 +10,9 @@ export let HEAD = ({title, css, userAgent}) => {
         <title>{title}</title>
         <Styler rules={ssrBehavior.getStylesheetString(userAgent)}/>
         <Styler rules={css.join('')}/>
+
+        <Styler rules={require("-!raw-loader!slick-carousel/slick/slick.css")}/>
+        <Styler rules={require("-!raw-loader!slick-carousel/slick/slick-theme.css")}/>
     </head>)
 };
 

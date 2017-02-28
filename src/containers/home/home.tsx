@@ -14,21 +14,24 @@ const css = require('./css/home.pcss');
 export const HomeComponent = compose(
     withStyles(css),
     firebaseConnect([
-        {path: '/app'} // object notation
+        {path: '/app'}, // object notation
+        {path: '/jobs'} // object notation
     ]),
     connect(
         ({firebase}) => ({
             // Connect todos prop to firebase todos
-            app: dataToJS(firebase, '/app'),
+            general: dataToJS(firebase, '/app'),
+            jobs: dataToJS(firebase, '/jobs'),
         })
     )
-)(props => {
-    console.log(props);
+)(({general, jobs, push}) => {
     return (<div>
         <LoginButton
             css={css.loginButton}
-            push={props.push}/>
-        <Story app={props.app}/>
+            push={push}/>
+        <Story
+            jobs={jobs}
+            app={general}/>
     </div>)
 });
 

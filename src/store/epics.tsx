@@ -1,10 +1,13 @@
 import {combineEpics} from "redux-observable";
 import "rxjs";
-import {pingEpic} from "./app/app.epic";
+import {loginEpic} from "../containers/login/login.epic";
+import {logoutEpic} from "../containers/shell/logout.epic";
+import {jobDeleteEpic} from "../components/jobs/jobs.delete.epic";
+import {jobsFormEpic} from "../components/jobs/jobs.form.epic";
 
 
 export const RootEpic = combineEpics(
-    pingEpic
+    loginEpic, logoutEpic, jobDeleteEpic, jobsFormEpic
 );
 
 
