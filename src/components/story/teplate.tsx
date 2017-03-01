@@ -13,6 +13,8 @@ const theme = createTheme({
 
 export const Preentation = ({jobs, app}) => {
     return <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
+
+
         <Slide transition={["zoom"]} bgColor="primary">
             <Heading size={1} fit caps lineHeight={1} textColor="secondary">
                 {app.title}
@@ -26,6 +28,9 @@ export const Preentation = ({jobs, app}) => {
         <Slide transition={["slide"]}
                bgImage={"https://goo.gl/8E5K0K"}
                bgDarken={0.70}>
+            <Text margin="10px 0 0" textColor="tertiary" size={1} fit>
+                We work for
+            </Text>
             {       Object.keys(jobs).map((job, index) => {
                 return <Appear
                     key={Math.random()}

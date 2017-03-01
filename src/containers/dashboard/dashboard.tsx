@@ -20,7 +20,7 @@ export class Dashboard extends React.Component<any, any> {
                 <TabsExampleSwipeable>
                     <Route exact path="/dashboard/jobs"
                            component={JobsComponent}/>
-                    <Route exact path="/dashboard/people"
+                    <Route exact path="/dashboard/workers"
                            component={Workers}/>
                     <Route path="/dashboard/general"
                            component={General}/>

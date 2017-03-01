@@ -2,37 +2,38 @@ import "rxjs";
 import {Observable} from "rxjs";
 import {getFirebase} from "react-redux-firebase";
 import {push} from "connected-react-router";
-import {SHOW_MODAL} from "./jobs.actions";
+import {SHOW_WORKER_MODAL} from "./workers.actions";
 import {toastr} from "react-redux-toastr";
 
-export const JOB_FORM_SUBMIT_ACTION_NAME = "JOB_FORM_SUBMIT";
-export const JOB_FORM_SUBMIT =
-    (jobstore: any, form: Job): Action <{id, form, kind}> => {
+export const WORKER_FORM_SUBMIT_ACTION_NAME = "WORKER_FORM_SUBMIT";
+export const WORKER_FORM_SUBMIT =
+    (workerStore: any, form: AppWorker): Action <{id, form: AppWorker, kind}> => {
+        console.log(workerStore);
         return {
-            type: JOB_FORM_SUBMIT_ACTION_NAME,
+            type: WORKER_FORM_SUBMIT_ACTION_NAME,
             payload: {
-                id: jobstore.editing_job.id,
+                id: workerStore.id,
                 form: form,
-                kind: jobstore.form_mode
+                kind: workerStore.form_mode
             }
         }
     };
 
 
-export const jobsFormEpic = action$ => {
-    return action$.ofType(JOB_FORM_SUBMIT_ACTION_NAME)
+export const workerFormEpic = action$ => {
+    return action$.ofType(WORKER_FORM_SUBMIT_ACTION_NAME)
         .mergeMap(
-            (action: Action<{id, form: Job, kind}>) => {
-
+            (action: Action<{id, form: AppWorker, kind}>) => {
+                console.log(action.payload.id);
                 return Observable.fromPromise(
                     getFirebase().database()
-                        .ref('jobs/' + action.payload.id)
+                        .ref('workers/' + action.payload.id)
                         .set(action.payload.form)
                 )
                     .catch(err => Observable.of(toastr.error('The error title',
                         'The error ' + err)))
                     .mapTo(toastr.success('The title', SuccessMsg(action)))
-                    .mapTo(SHOW_MODAL(false))
+                    .mapTo(SHOW_WORKER_MODAL(false))
             }
         )
 };

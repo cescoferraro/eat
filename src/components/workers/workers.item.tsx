@@ -10,47 +10,48 @@ import Avatar from "material-ui/Avatar";
 import * as HammerComponent from "react-hammerjs";
 
 
-export const JobItem = ({job, DELETE_JOB, SET_FORM_MODE, ID, SHOW_JOBS_MODAL, SET_EDITING_JOB}) => {
-    let subtitle = (
-        <span style={{color: darkBlack}}>
-                {job.subtitle}
-            </span>
-    );
-    let title = (
-        <span style={{color: darkBlack}}>
-                {job.title}
-            </span>
-    );
-    const openModal = () => {
-        SET_FORM_MODE("update");
-        SET_EDITING_JOB(ID, job);
-        SHOW_JOBS_MODAL(true);
+export const WorkerItem = ({
+    worker, SHOW_WORKER_MODAL,
+    SET_WORKER_FORM_MODE,
+    DELETE_WORKER,
+    SET_EDITING_WORKER, ID
+}:
+    {
+        ID: string,
+        SHOW_WORKER_MODAL,
+        DELETE_WORKER,
+        SET_WORKER_FORM_MODE,
+        SET_EDITING_WORKER, worker: AppWorker
+    }) => {
+
+    let openModal = () => {
+        SET_WORKER_FORM_MODE("update");
+        SET_EDITING_WORKER(ID, worker);
+        SHOW_WORKER_MODAL(true);
     };
     const GODelete = () => {
         console.info("DELETEING " + ID);
-        DELETE_JOB(ID);
+        DELETE_WORKER(ID);
     };
 
     return (
-        <HammerComponent onPress={openModal}>
+        <HammerComponent onPress={()=>{}}>
             <ListItem key={Math.random()}
-                      leftAvatar={<Avatar src={job.image}/>}
+                      leftAvatar={<Avatar src={worker.avatar} />}
+                      primaryText={worker.name}
+
                       rightIconButton={rightIconMenu(openModal,GODelete)}
-                      primaryText={job.company}
-                      secondaryText={<Text2  job={job}/>}
+                      secondaryText={<Subtitle  worker={worker}/>}
                       secondaryTextLines={2}/>
         </HammerComponent>
     )
 };
 
-
-let Text2 = ({job}) => {
+let Subtitle = ({worker}:{worker: AppWorker}) => {
     return (
         <p>
-            <span style={{color: darkBlack}}> {job.title}</span>
+            <span style={{color: darkBlack}}> {worker.job}</span>
             <br/>
-            <span style={{color: darkBlack}}>{job.subtitle}</span>
-            <br/>{job.url}
         </p>
     )
 };

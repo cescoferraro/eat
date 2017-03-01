@@ -16,6 +16,8 @@ declare let require: any;
 injectTapEventPlugin();
 
 
+
+
 export default  () => (request, response) => {
     const context = createServerRenderContext();
     const result = context.getResult();

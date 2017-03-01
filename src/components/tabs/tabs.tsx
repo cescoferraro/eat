@@ -27,7 +27,7 @@ export class TabsExampleSwipeable extends React.Component<any,any> {
                     slideIndex: 0,
                 });
                 break;
-            case "/dashboard/people":
+            case "/dashboard/workers":
                 this.setState({
                     slideIndex: 1,
                 });
@@ -50,7 +50,7 @@ export class TabsExampleSwipeable extends React.Component<any,any> {
                         this.props.dispatch(push("/dashboard/jobs"));
                         break;
                     case 1:
-                        this.props.dispatch(push("/dashboard/people"));
+                        this.props.dispatch(push("/dashboard/workers"));
                         console.log('0sdf');
                         break;
                     case 2:

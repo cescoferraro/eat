@@ -11,6 +11,7 @@ export let HEAD = ({title, css, userAgent}) => {
         <Styler rules={ssrBehavior.getStylesheetString(userAgent)}/>
         <Styler rules={css.join('')}/>
 
+        <Styler rules={require("-!raw-loader!react-redux-toastr/lib/css/react-redux-toastr.min.css")}/>
         <Styler rules={require("-!raw-loader!slick-carousel/slick/slick.css")}/>
         <Styler rules={require("-!raw-loader!slick-carousel/slick/slick-theme.css")}/>
     </head>)

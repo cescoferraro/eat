@@ -14,22 +14,16 @@ export const JobForm = compose(
     }), APP_ACTIONS),
     reduxForm({form: 'jobForm'})
 )(({
-    handleSubmit,
-    JOB_FORM_SUBMIT,
-    jobsStore,
-    CloseButton,
-    DELETE_JOB,
-    ID
-}) => {
-    const submit = (form) => {
-        JOB_FORM_SUBMIT(jobsStore.editing_job.id, form);
-    };
-    const DELETE = () => {
-        DELETE_JOB(ID);
-    };
-    return <div>
+        handleSubmit,
+        JOB_FORM_SUBMIT,
+        jobsStore,
+        CloseButton,
+        DELETE_JOB,
+        ID
+    }) => (<div>
         <h2>form!!!!</h2>
-        <form onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit((form) =>
+                    {JOB_FORM_SUBMIT(jobsStore, form)})}>
             <Field name="company"
                    fullWidth={true}
                    component={TextField}
@@ -59,10 +53,10 @@ export const JobForm = compose(
             <CloseButton/>
 
         </form>
-        <button onClick={DELETE}>
+        <button onClick={() => {DELETE_JOB(ID)}}>
             <h2>DELETE</h2>
         </button>
-    </div>
-});
+    </div>)
+);
 
 

@@ -9,6 +9,7 @@ export let defaultAPP: App = {
 export let defaultJob: Job = {
     title: "WE ROCK YOUR WORLD!",
     subtitle: "WE ROCK YOUR WORLD!",
+    company: "WE ROCK YOUR WORLD!",
     content: "WE ROCK YOUR WORLD!",
     image: "WEAREEAT",
     url: "WE ROCK YOUR WORLD!",

@@ -4,7 +4,6 @@ import {reactReduxFirebase, firebaseStateReducer} from "react-redux-firebase";
 import {createEpicMiddleware} from "redux-observable";
 import {RootEpic} from "./epics";
 import {routerMiddleware, connectRouter} from "connected-react-router";
-import {initialJobReducer} from "../components/jobs/jobs.reducer";
 import {startup} from "./startup";
 
 
