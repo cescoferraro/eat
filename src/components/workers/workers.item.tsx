@@ -35,7 +35,7 @@ export const WorkerItem = ({
     };
 
     return (
-        <HammerComponent onPress={()=>{}}>
+        <HammerComponent onPress={openModal}>
             <ListItem key={Math.random()}
                       leftAvatar={<Avatar src={worker.avatar} />}
                       primaryText={worker.name}
@@ -50,7 +50,13 @@ export const WorkerItem = ({
 let Subtitle = ({worker}:{worker: AppWorker}) => {
     return (
         <p>
-            <span style={{color: darkBlack}}> {worker.job}</span>
+            <span style={{color: darkBlack}}>
+                {worker.job}
+            </span>
+            <br/>
+            <span style={{color: darkBlack}}>
+                {worker.country}
+            </span>
             <br/>
         </p>
     )

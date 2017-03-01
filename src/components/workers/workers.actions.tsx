@@ -9,7 +9,7 @@ export const SET_EDITING_WORKER_ACTION_NAME = "SET_EDITING_WORKER";
 export const SET_EDITING_WORKER = (id: string, worker: AppWorker) => {
     return {
         type: SET_EDITING_WORKER_ACTION_NAME,
-        payload: {id: id, editing_worker: worker}
+        payload: {id: id, worker: worker}
     }
 };
 

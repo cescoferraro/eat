@@ -9,7 +9,7 @@ import {APP_ACTIONS} from "../../store/actions";
 
 export const WorkerForm = compose(
     connect(state => ({
-        initialValues: state.workers.editing_worker,
+        initialValues: state.workers.editing_worker.worker,
         ID: state.workers.editing_worker.id,
         workersStore: state.workers
     }), APP_ACTIONS),
@@ -18,13 +18,13 @@ export const WorkerForm = compose(
     handleSubmit,
     workersStore,
     WORKER_FORM_SUBMIT,
+    DELETE_WORKER,
     CloseButton,
     ID
 }) => {
+    console.log(workersStore);
     return <div>
-        <h2>form!!!!</h2>
-        <form onSubmit={handleSubmit((form)=>
-                {WORKER_FORM_SUBMIT(workersStore, form)})}>
+        <form>
             <Field name="name"
                    fullWidth={true}
                    floatingLabelText={"Name"}
@@ -40,12 +40,25 @@ export const WorkerForm = compose(
                    fullWidth={true}
                    component={TextField}
                    hintText="Avatar"/>
-            <button type="submit">
-                <h2>{workersStore.form_mode}</h2>
-            </button>
-            <CloseButton/>
+            <Field name="country"
+                   floatingLabelText={"Country"}
+                   fullWidth={true}
+                   component={TextField}
+                   hintText="Country"/>
+
 
         </form>
+        <button onClick={handleSubmit((form)=>
+                {WORKER_FORM_SUBMIT(workersStore, form)})}>
+            <h2>{workersStore.form_mode}</h2>
+        </button>
+        <CloseButton/>
+
+        <button onClick={() => {
+
+            DELETE_WORKER(ID)}}>
+            <h2>DELETE</h2>
+        </button>
     </div>
 });
 

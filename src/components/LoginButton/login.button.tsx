@@ -1,5 +1,5 @@
 import FloatingActionButton from "material-ui/FloatingActionButton";
-import ContentAdd from "material-ui/svg-icons/content/add";
+import LaunchIcon from "material-ui/svg-icons/action/launch";
 import * as React from "react";
 
 export const LoginButton = ({push, css}) => {
@@ -9,6 +9,6 @@ export const LoginButton = ({push, css}) => {
     return <FloatingActionButton
         onClick={login}
         className={css}>
-        <ContentAdd />
+        <LaunchIcon/>
     </FloatingActionButton>
 };

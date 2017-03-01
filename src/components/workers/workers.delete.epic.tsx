@@ -15,7 +15,7 @@ export const DELETE_WORKER =
     };
 
 
-export const jobDeleteEpic = action$ => {
+export const workerDeleteEpic = action$ => {
     return action$.ofType(DELETE_WORKER_ACTION_NAME)
         .mergeMap(
             (action: Action<string>) => {

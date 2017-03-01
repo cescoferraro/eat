@@ -42,6 +42,7 @@ export const Workers = compose(
             SHOW_WORKER_MODAL={SHOW_WORKER_MODAL}
             workers={workers}/>
         <WorkerModal
+            DELETE_WORKER={DELETE_WORKER}
             SHOW_WORKER_MODAL={SHOW_WORKER_MODAL}
             workersStore={workersStore}/>
         <AddWorkerButton

@@ -12,7 +12,7 @@ export const WORKER_FORM_SUBMIT =
         return {
             type: WORKER_FORM_SUBMIT_ACTION_NAME,
             payload: {
-                id: workerStore.id,
+                id: workerStore.editing_worker.id,
                 form: form,
                 kind: workerStore.form_mode
             }
@@ -38,10 +38,8 @@ export const workerFormEpic = action$ => {
         )
 };
 
-const SuccessMsg = action => ('The job ' +
-    action.payload.form.title +
-    " from the client " +
-    action.payload.form.company +
+const SuccessMsg = action => ('The worker ' +
+    action.payload.form.name +
     " got " + action.payload.kind + "ed"
 );
 

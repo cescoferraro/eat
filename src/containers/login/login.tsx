@@ -5,28 +5,32 @@ import {connect} from "react-redux";
 import {TextField} from "redux-form-material-ui";
 import {reduxForm, Field} from "redux-form";
 import {firebaseConnect, dataToJS, getFirebase} from "react-redux-firebase";
+import {push} from "connected-react-router";
 import "rxjs";
 import {APP_ACTIONS} from "../../store/actions";
-
-
 const css = require('./login.pcss');
 
-@withStyles(css)
-@reduxForm({
-    form: 'loginForm'
-})
-@connect(state => ({
-    app: state.app
-}), APP_ACTIONS)
-export class Login extends React.Component<any,any> {
-
-    render() {
-        console.log(this.props);
-
-        const {handleSubmit}= this.props;
-        return (<div className={css.page}>
-
-            <form onSubmit={handleSubmit(this.props.LOGIN.bind(this))}>
+export const Login = compose(
+    withStyles(css),
+    reduxForm({
+        form: 'loginForm'
+    }),
+    connect(({app, firebase}) => ({
+        app: app,
+        firebase: firebase
+    }), APP_ACTIONS)
+)(({handleSubmit, firebase, dispatch, LOGIN}) => {
+    return (<div className={css.page}>
+        {firebase.get("auth") != null ?
+            <div >
+                {redirect(dispatch)}
+                <button onClick={()=>{
+                    dispatch(push("/dashboard/jobs"))
+                }}>
+                    <h2>JUST GET IN!</h2>
+                </button>
+            </div>:
+            <form onSubmit={handleSubmit(LOGIN.bind(this))}>
                 <Field name="email"
                        type="email"
                        floatingLabelText="Email"
@@ -49,10 +53,14 @@ export class Login extends React.Component<any,any> {
                     style={{height:"100px",width:"100%"}}
                     type="submit">VAI
                 </button>
-            </form>
-        </div>)
-    }
-}
+            </form>}
+    </div>)
+});
 
+const redirect = (dispatch) => {
+    setTimeout(() => {
+        dispatch(push("/dashboard/jobs"));
+    }, 2000)
+};
 
 

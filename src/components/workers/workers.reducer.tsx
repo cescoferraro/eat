@@ -19,11 +19,7 @@ export const WorkersReducer = (state, action: any = {}) => {
             return {...state, modal: action.payload};
         case SET_EDITING_WORKER_ACTION_NAME:
             console.log(action.payload);
-            return {
-                ...state,
-                id: action.payload.id,
-                editing_worker: action.payload.editing_worker
-            };
+            return {...state, editing_worker: action.payload};
         case SET_WORKER_FORM_MODE_ACTION_NAME:
             return {...state, form_mode: action.payload};
         default:

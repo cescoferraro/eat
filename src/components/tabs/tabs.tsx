@@ -77,7 +77,7 @@ export class TabsExampleSwipeable extends React.Component<any,any> {
                         label="JOBS"
                         value={0}
                     />
-                    <Tab icon={<FaceIcon />} label="PEOPLE" value={1}/>
+                    <Tab icon={<FaceIcon />} label="WORKERS" value={1}/>
 
                     <Tab
                         icon={<SettingsIcon />}

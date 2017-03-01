@@ -3,7 +3,10 @@ import * as Modal from "react-modal";
 import {WorkerForm} from "./workers.form";
 
 
-export const WorkerModal = ({workersStore, SHOW_WORKER_MODAL}) => {
+export const WorkerModal = ({
+    workersStore,
+    DELETE_WORKER,
+    SHOW_WORKER_MODAL}) => {
 
     const CloseButton = props =><button onClick={()=>{SHOW_WORKER_MODAL(false)}}>
         <h2>close</h2>
@@ -13,7 +16,9 @@ export const WorkerModal = ({workersStore, SHOW_WORKER_MODAL}) => {
         isOpen={workersStore.modal}
         closeTimeoutMS={300}
         contentLabel="Modal">
-        <WorkerForm CloseButton={CloseButton}/>
+        <WorkerForm
+            DELETE_WORKER={DELETE_WORKER}
+            CloseButton={CloseButton}/>
 
     </Modal>
 };
