@@ -11,7 +11,8 @@ let server = [
 	new webpack.NamedModulesPlugin(),
 	new webpack.NoEmitOnErrorsPlugin(),
 	new webpack.DefinePlugin({
-		'NODE_ENV': JSON.stringify(env)
+		'NODE_ENV': JSON.stringify(env),
+		'process.env.NODE_ENV': JSON.stringify(env)
 	}),
 	new webpack.LoaderOptionsPlugin({
 		minimize: true,

@@ -2,15 +2,26 @@ const loaders = {
 	rules: [
 		{
 			test: /\.(tsx?)$/,
-			loaders: ['react-hot-loader/webpack', 'ts-loader?silent=true&configFileName=src/tsconfig.json', 'tslint-loader']
+			loaders: [
+				'react-hot-loader/webpack',
+				'ts-loader?silent=true&configFileName=src/tsconfig.json',
+				'tslint-loader'
+			]
 		}, {
 			test: /\.(pcss)$/,
 			loader: [
 				'isomorphic-style-loader',
-				'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:3]!postcss-loader?sourceMap',
+				{
+					loader: "css-loader",
+					query: {
+						sourceMap: true,
+						modules: true,
+						importLoaders: 1,
+						localIdentName: "[name]_[local]_[hash:base64:3]",
+					},
+				},
 				'postcss-loader?sourceMap'
 			]
-
 		},
 		{
 			test: /\.css$/,
