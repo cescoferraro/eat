@@ -1,6 +1,5 @@
 declare const require: any;
 declare const process: any;
-console.log(process.env);
 let compression = require('compression');
 let express = require('express');
 let morgan = require('morgan');

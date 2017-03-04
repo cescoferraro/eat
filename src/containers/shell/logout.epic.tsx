@@ -21,7 +21,6 @@ export const logoutEpic = action$ =>
                 getFirebase().auth().signOut()
             )
                 .catch(err => {
-                    console.log(err);
                     return Observable.empty()
                 }) .mapTo(push("/"))
         );

@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as _ from "lodash";
 import {BlockQuote, Appear, Cite, Deck, Heading, ListItem, List, Quote, Slide, Text} from "spectacle";
 import createTheme from "spectacle/lib/themes/default";
 const theme = createTheme({
@@ -11,11 +12,12 @@ const theme = createTheme({
     secondary: "Helvetica"
 });
 
-export const Preentation = ({jobs, app}) => {
+export const Preentation = ({jobs, app, FirebaseWorkers}) => {
+    console.log(FirebaseWorkers)
     return <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
 
 
-        <Slide transition={["zoom"]} bgColor="primary">
+        <Slide transition={["zoom"]} bgColor="primary">'''"
             <Heading size={1} fit caps lineHeight={1} textColor="secondary">
                 {app.title}
             </Heading>
@@ -44,6 +46,26 @@ export const Preentation = ({jobs, app}) => {
 
         </Slide>
 
+        <Slide transition={["slide"]}
+               bgImage={"https://goo.gl/PL2DkY"}
+               bgDarken={0.70}>
+            <Text margin="10px 0 0" textColor="tertiary" size={1} fit>
+                We live at
+            </Text>
+            {   _(FirebaseWorkers)
+                .keys()
+                .shuffle()
+                .filter((worker, index) => (index < 4))
+                .map((ID, index) => (<Appear
+                    key={Math.random()}
+                    fid={index}>
+                    <Heading size={1} caps fit textColor="primary">
+                        {FirebaseWorkers[ID].country}
+                    </Heading>
+                </Appear>)).value()
+            }
+        </Slide>
+
 
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
             <BlockQuote>
@@ -52,21 +74,4 @@ export const Preentation = ({jobs, app}) => {
             </BlockQuote>
         </Slide>
     </Deck>
-};
-
-
-export const Slide2 = ({users}) => {
-    return <Slide transition={["fade"]} bgColor="tertiary">
-        {users.map((i) => {
-            return <div key={Math.random()}/>
-        })}
-    </Slide>
-};
-
-export const Slide3 = ({posts}) => {
-    return <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-        <div style={{}}>
-            {posts.map((i) => (<div key={Math.random()}/>))}
-        </div>
-    </Slide>
 };

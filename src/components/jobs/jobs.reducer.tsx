@@ -13,7 +13,6 @@ export const JobReducer = (state, action: any = {}) => {
         case SHOW_MODAL_ACTION_NAME:
             return {...state, modal: action.payload};
         case SET_EDITING_JOB_ACTION_NAME:
-            console.log(action.payload);
             return {...state, editing_job: action.payload};
         case SET_FORM_MODE_ACTION_NAME:
             return {...state, form_mode: action.payload};

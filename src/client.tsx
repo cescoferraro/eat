@@ -18,13 +18,6 @@ if (module.hot) {
             "./render.tsx"
         ]
         , () => {
-            console.log("=======================");
-            console.log("client.tsx module");
-            console.log(module);
-            console.log("module hot");
-            console.log(module.hot);
-            console.log("=======================");
-            console.log("attempting to reload the app");
             unmountComponentAtNode(tag);
             const NextEatApp = require("./app.tsx").App;
             const NewRenderer = require("./render.tsx").Renderer;

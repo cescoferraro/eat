@@ -4,7 +4,6 @@ import {JobForm} from "./jobs.form";
 
 
 export const JobModal = ({jobsStore, JOB_FORM_SUBMIT, SHOW_JOBS_MODAL}) => {
-    console.log(jobsStore);
     const CloseButton = props =><button onClick={()=>{SHOW_JOBS_MODAL(false)}}>
         <h2>close</h2>
     </button>;

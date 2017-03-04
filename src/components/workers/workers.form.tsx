@@ -22,7 +22,6 @@ export const WorkerForm = compose(
     CloseButton,
     ID
 }) => {
-    console.log(workersStore);
     return <div>
         <form>
             <Field name="name"

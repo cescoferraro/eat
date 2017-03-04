@@ -1,18 +1,17 @@
 import * as React from "react";
-import {BlockQuote, Cite, Deck, Heading, ListItem, List, Quote, Slide, Text} from "spectacle";
-import {firebaseConnect, isLoaded, isEmpty, dataToJS} from "react-redux-firebase";
+import {firebaseConnect, isLoaded, isEmpty} from "react-redux-firebase";
 import {Preentation} from "./teplate";
-import {defaultAPP, defaultJob} from "../../shared/default.app";
 
 
 export class Story extends React.Component<any,any> {
     render() {
-        console.log(this.props.app);
-        console.log(this.props.jobs);
-        return !isLoaded(this.props.app) || !isLoaded(this.props.jobs)
-            ? <Preentation jobs={{"og":defaultJob}} app={defaultAPP}/>
+        const {app, jobs, workers} = this.props;
+        return !isLoaded(app) || !isLoaded(jobs)
+            ? <h2>LOADING...</h2>
             : isEmpty(this.props.app) || isEmpty(this.props.jobs)
-                ? <div>The database is empty</div>
-                : <Preentation jobs={this.props.jobs} app={this.props.app}/>
+                ? <h2>(ERROR...) - FIREBASE DATABASE IS EMPTY </h2>
+                : <Preentation
+                    FirebaseWorkers={workers}
+                    jobs={this.props.jobs} app={this.props.app}/>
     }
 }

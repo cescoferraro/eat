@@ -20,7 +20,6 @@ class TabsExampleSwipeable extends React.Component<any,any> {
     }
 
     hello(par) {
-        console.log(par)
 
     }
 

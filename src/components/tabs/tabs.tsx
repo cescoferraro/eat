@@ -51,11 +51,9 @@ export class TabsExampleSwipeable extends React.Component<any,any> {
                         break;
                     case 1:
                         this.props.dispatch(push("/dashboard/workers"));
-                        console.log('0sdf');
                         break;
                     case 2:
                         this.props.dispatch(push("/dashboard/general"));
-                        console.log('0sdf');
                         break;
                 }
             }

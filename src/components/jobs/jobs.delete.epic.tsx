@@ -19,7 +19,6 @@ export const jobDeleteEpic = action$ => {
     return action$.ofType(DELETE_JOB_ACTION_NAME)
         .mergeMap(
             (action: Action<string>) => {
-                console.log(action.payload);
 
                 return Observable.fromPromise(
                     getFirebase().database()

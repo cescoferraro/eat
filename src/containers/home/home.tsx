@@ -15,6 +15,7 @@ export const HomeComponent = compose(
     withStyles(css),
     firebaseConnect([
         {path: '/app'}, // object notation
+        {path: '/workers'}, // object notation
         {path: '/jobs'} // object notation
     ]),
     connect(
@@ -22,14 +23,17 @@ export const HomeComponent = compose(
             // Connect todos prop to firebase todos
             general: dataToJS(firebase, '/app'),
             jobs: dataToJS(firebase, '/jobs'),
+            workers: dataToJS(firebase, '/workers'),
         })
     )
-)(({general, jobs, push}) => {
+)(({general, jobs, push, workers}) => {
+    console.log(workers);
     return (<div>
         <LoginButton
             css={css.loginButton}
             push={push}/>
         <Story
+            workers={workers}
             jobs={jobs}
             app={general}/>
     </div>)

@@ -23,7 +23,6 @@ export const loginEpic = action$ =>
                         action.payload.email, action.payload.password)
             )
                 .catch(err => {
-                    console.log(err);
                     return Observable.empty()
                 }) .mapTo(push("/dashboard/jobs"))
         );

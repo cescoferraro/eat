@@ -8,7 +8,6 @@ import {toastr} from "react-redux-toastr";
 export const WORKER_FORM_SUBMIT_ACTION_NAME = "WORKER_FORM_SUBMIT";
 export const WORKER_FORM_SUBMIT =
     (workerStore: any, form: AppWorker): Action <{id, form: AppWorker, kind}> => {
-        console.log(workerStore);
         return {
             type: WORKER_FORM_SUBMIT_ACTION_NAME,
             payload: {
@@ -24,7 +23,6 @@ export const workerFormEpic = action$ => {
     return action$.ofType(WORKER_FORM_SUBMIT_ACTION_NAME)
         .mergeMap(
             (action: Action<{id, form: AppWorker, kind}>) => {
-                console.log(action.payload.id);
                 return Observable.fromPromise(
                     getFirebase().database()
                         .ref('workers/' + action.payload.id)
