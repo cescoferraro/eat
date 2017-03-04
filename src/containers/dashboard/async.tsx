@@ -8,5 +8,7 @@ export const AsyncDashboard = userAgent => createAsyncComponent({
         require.ensure([], (require) => {
             resolve(require("./dashboard.tsx").Dashboard);
         }, "dashboard.js")),
+    defer: true,
+    ssrMode: "defer",
     Loading: (prop) => <Spinner userAgent={userAgent}/>
 });

@@ -8,6 +8,7 @@ export const AsyncHome = userAgent => createAsyncComponent({
             resolve(require("./home").HomeComponent);
         }, "home.js")),
     defer: true,
+    ssrMode: "defer",
     Loading: (prop) => <Spinner userAgent={userAgent}/>
 });
 

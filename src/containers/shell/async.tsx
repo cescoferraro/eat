@@ -7,5 +7,7 @@ export const AsyncAppBar = userAgent => createAsyncComponent({
         require.ensure([], (require) => {
             resolve(require("./shell.tsx").AppBar);
         }, "shell.js")),
+    defer: true,
+    ssrMode: "defer",
     Loading: (prop) => <Spinner userAgent={userAgent}/>
 });

@@ -7,5 +7,7 @@ export const AsyncLogin = userAgent => createAsyncComponent({
         require.ensure([], (require) => {
             resolve(require("./login.tsx").Login);
         }, "login.js")),
+    defer: true,
+    ssrMode: "defer",
     Loading: (prop) => <Spinner userAgent={userAgent}/>
 });
