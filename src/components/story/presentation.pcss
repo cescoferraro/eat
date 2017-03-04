@@ -1,0 +1,20 @@
+.swipeButton {
+  position: absolute;
+  display: flex;
+  right: 0;
+  bottom: -15vh;
+  z-index: 222;
+  opacity: 0;
+  animation: mymove 0.5s 25 alternate ease-in-out;
+}
+
+@keyframes mymove {
+  0% {
+    right: 0px;
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    right: 10vw;
+  }
+}

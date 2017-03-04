@@ -27,7 +27,6 @@ export const HomeComponent = compose(
         })
     )
 )(({general, jobs, push, workers}) => {
-    console.log(workers);
     return (<div>
         <LoginButton
             css={css.loginButton}
