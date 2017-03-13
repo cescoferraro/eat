@@ -1,6 +1,6 @@
 import * as React from "react";
 import {compose} from "recompose";
-import {withStyles} from "../../shared/withStyle";
+import {StyleConnect} from "../StyleConnect";
 import {connect} from "react-redux";
 import {firebaseConnect, isLoaded, isEmpty, dataToJS} from "react-redux-firebase";
 import {APP_ACTIONS} from "../../store/actions";
@@ -14,7 +14,7 @@ const css = require("./workers.pcss");
 
 
 export const Workers = compose(
-    withStyles(css),
+    StyleConnect(css),
     firebaseConnect([
         '/workers'
         // { path: '/todos' } // object notation

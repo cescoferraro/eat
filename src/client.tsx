@@ -1,10 +1,9 @@
-import {tag} from "./shared/tag";
+import {tag} from "./shared";
 import * as React from "react";
 import * as injectTapEventPlugin from "react-tap-event-plugin";
-import {App} from "./app";
-import {Renderer} from "./render";
+import {App} from "./components/App";
+import {Renderer} from "./shared/render";
 import {unmountComponentAtNode} from "react-dom";
-declare const module, require: any;
 injectTapEventPlugin();
 
 
@@ -14,13 +13,13 @@ if (module.hot) {
     module.hot.accept(
         [
             "./store/store.tsx",
-            "./app.tsx",
-            "./render.tsx"
-        ]
-        , () => {
+            "./components/App/index.tsx",
+            "./shared/render.tsx"
+        ],
+        () => {
             unmountComponentAtNode(tag);
-            const NextEatApp = require("./app.tsx").App;
-            const NewRenderer = require("./render.tsx").Renderer;
+            const NextEatApp = require("./components/App/index.tsx").App;
+            const NewRenderer = require("./shared/render.tsx").Renderer;
             NewRenderer(NextEatApp({userAgent: navigator.userAgent}));
         });
 }

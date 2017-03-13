@@ -1,7 +1,7 @@
 import * as React from "react";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import ContentAdd from "material-ui/svg-icons/content/add";
-import {guid} from "../../shared/guid";
+import {guid} from "../../shared";
 import {WorkersFactory} from "./workers.factory";
 
 

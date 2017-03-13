@@ -4,14 +4,14 @@ import IconButton from "material-ui/IconButton";
 import Pizza from "material-ui/svg-icons/maps/local-pizza";
 import ArrowBack from "material-ui/svg-icons/action/exit-to-app";
 import {compose} from "recompose";
-import {withStyles} from "../../shared/withStyle";
+import {StyleConnect} from "../../components/StyleConnect";
 import {connect} from "react-redux";
 import {APP_ACTIONS} from "../../store/actions";
 
 const css = require("./shell.pcss");
 
 export const AppBar = compose(
-    withStyles(css),
+    StyleConnect(css),
     connect(state => (
         {
             firebase: state.firebase,

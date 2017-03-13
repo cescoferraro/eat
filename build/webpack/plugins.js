@@ -5,8 +5,9 @@ let FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const env = process.env.NODE_ENV || 'development';
 let Visualizer = require('webpack-visualizer-plugin');
 let WebpackChunkHash = require('webpack-chunk-hash');
+
+
 let server = [
-	new Visualizer(),
 	new WebpackChunkHash({algorithm: 'md5'}),
 	new webpack.NamedModulesPlugin(),
 	new webpack.NoEmitOnErrorsPlugin(),
@@ -37,19 +38,27 @@ let server = [
 
 let client = [
 	...server,
-	new FaviconsWebpackPlugin({
-		logo: './src/shared/icon/favicon.jpg',
-		prefix: 'icons/'
-	}),
-	new StatsWebpackPlugin('stats.json', {
-		chunkModules: true,
-		exclude: [/node_modules/]
-	}),
+
 ];
 
 
 // HOT-MODULE-REPLACEMENT
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
+	client.push(new webpack.optimize.CommonsChunkPlugin(
+		{
+			name: 'vendor',
+			chunks: ['app', 'libs'],
+			filename: 'vendor.js'
+		}));
+	client.push(new FaviconsWebpackPlugin({
+		logo: './src/shared/icon/favicon.jpg',
+		prefix: 'icons/'
+	}));
+	client.push(new StatsWebpackPlugin('stats.json', {
+		chunkModules: true,
+		exclude: [/node_modules/]
+	}));
+} else {
 	client.push(new webpack.HotModuleReplacementPlugin());
 	client.push(
 		new webpack.DllReferencePlugin({
@@ -57,13 +66,6 @@ if (process.env.NODE_ENV !== "production") {
 			manifest: require('../../www/vendor.json')
 		}));
 
-} else {
-	client.push(new webpack.optimize.CommonsChunkPlugin(
-		{
-			name: 'vendor',
-			chunks: ['app', 'libs'],
-			filename: 'vendor.js'
-		}));
 }
 
 

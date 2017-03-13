@@ -1,14 +1,10 @@
-declare const require: any;
-declare const process: any;
-let compression = require('compression');
-let express = require('express');
-let morgan = require('morgan');
-const app = express()
-
-
+const compression = require('compression');
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
 app.disable('x-powered-by');
 app.use(compression());
 app.use(express.static("www"));
 app.use(morgan("combined"));
-app.use(require("./middleware").default());
+app.use(require("./shared/middleware").default());
 app.listen(4000);

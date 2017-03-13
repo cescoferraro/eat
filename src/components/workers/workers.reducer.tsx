@@ -1,4 +1,4 @@
-import {guid} from "../../shared/guid";
+import {guid} from "../../shared";
 import {WorkersFactory} from "./workers.factory";
 import {
     SET_WORKER_FORM_MODE_ACTION_NAME,

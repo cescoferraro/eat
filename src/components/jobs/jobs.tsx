@@ -1,6 +1,6 @@
 import * as React from "react";
 import {compose} from "recompose";
-import {withStyles} from "../../shared/withStyle";
+import {StyleConnect} from "../StyleConnect";
 import {connect} from "react-redux";
 import {List, ListItem} from "material-ui/List";
 import {grey400, darkBlack, lightBlack} from "material-ui/styles/colors";
@@ -14,7 +14,7 @@ const css = require("./jobs.pcss");
 
 
 export const JobsComponent = compose(
-    withStyles(css),
+    StyleConnect(css),
     firebaseConnect([
         '/jobs'
         // { path: '/todos' } // object notation

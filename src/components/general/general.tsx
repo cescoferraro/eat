@@ -1,6 +1,6 @@
 import * as React from "react";
 import {compose} from "recompose";
-import {withStyles} from "../../shared/withStyle";
+import {StyleConnect} from "../StyleConnect";
 import {connect} from "react-redux";
 import {List, ListItem} from "material-ui/List";
 import {grey400, darkBlack, lightBlack} from "material-ui/styles/colors";
@@ -13,7 +13,7 @@ import {toastr} from "react-redux-toastr";
 const css = require("./general.pcss");
 
 export const General = compose(
-    withStyles(css),
+    StyleConnect(css),
     firebaseConnect([
         '/app'
         // { path: '/todos' } // object notation
@@ -30,7 +30,12 @@ export const General = compose(
     GENERAL_FORM_SUBMIT,
     app = defaultAPP,
     handleSubmit
-}:{app: App, handleSubmit, GENERAL_FORM_SUBMIT}) => {
+}:
+    {
+        app: App,
+        handleSubmit,
+        GENERAL_FORM_SUBMIT
+    }) => {
 
     const submit = (form) => {
         GENERAL_FORM_SUBMIT(form);

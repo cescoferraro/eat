@@ -2,7 +2,7 @@ import * as React from "react";
 import * as hoistStatics from "hoist-non-react-statics";
 
 
-export const withStyles = (...styles) => {
+export const StyleConnect = (...styles) => {
     return (ComposedComponent) => {
 
         const displayName = ComposedComponent.displayName

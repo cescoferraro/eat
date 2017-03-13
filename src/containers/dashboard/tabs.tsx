@@ -19,10 +19,6 @@ class TabsExampleSwipeable extends React.Component<any,any> {
         })
     }
 
-    hello(par) {
-
-    }
-
     render() {
         return (
             <div id="tabs" className={css.container}>
@@ -37,10 +33,6 @@ class TabsExampleSwipeable extends React.Component<any,any> {
                         value={0}
                     />
                     <Tab icon={<FaceIcon />}
-                         onClick={()=>{
-
-                             this.hello("jskdfnsd")
-                         }}
                          label="PEOPLE"
                          value={1}/>
 

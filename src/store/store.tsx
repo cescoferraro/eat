@@ -7,8 +7,6 @@ import {routerMiddleware, connectRouter} from "connected-react-router";
 import {startup} from "./startup";
 
 
-declare let window, module: any;
-
 let config = {
     apiKey: "AIzaSyBxg-ZN4_K2t1pUXWeXL9hwzl42LO94McY",
     authDomain: "weareeat-9fd66.firebaseapp.com",
@@ -26,7 +24,7 @@ let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 
 export const store = (history) => {
 
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     let store = FirebaseStoreCreator(
         connectRouter(history)(allReducers),
         startup,

@@ -1,7 +1,11 @@
+const path = require("path");
+
 const loaders = {
 	rules: [
 		{
 			test: /\.(tsx?)$/,
+			include: [path.resolve(__dirname, '../../src')],
+			exclude: [path.resolve(__dirname, '../../node_modules')],
 			loaders: [
 				'react-hot-loader/webpack',
 				'ts-loader?silent=true&configFileName=src/tsconfig.json',
@@ -11,15 +15,7 @@ const loaders = {
 			test: /\.(pcss)$/,
 			loader: [
 				'isomorphic-style-loader',
-				{
-					loader: "css-loader",
-					query: {
-						sourceMap: true,
-						modules: true,
-						importLoaders: 1,
-						localIdentName: "[name]_[local]_[hash:base64:3]",
-					},
-				},
+				'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:3]!postcss-loader?sourceMap',
 				'postcss-loader?sourceMap'
 			]
 		},

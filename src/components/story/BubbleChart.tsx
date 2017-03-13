@@ -1,4 +1,3 @@
-declare let document: any;
 import * as d3 from "d3";
 import * as BaseChart from "myd3/lib/components/BaseChart";
 import * as React from "react";
@@ -71,7 +70,7 @@ export class BubbleChart extends BaseChart {
             .on("mousemove", this.onMouseMove.bind(this))
             .on("mouseout", this.onMouseOut.bind(this));
 
-        d3.select(document.frameElement).style("height", `${this.props.diameter} px`);
+        d3.select((document as any).frameElement).style("height", `${this.props.diameter} px`);
 
         this.addText();
 

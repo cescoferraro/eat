@@ -1,7 +1,7 @@
 import * as React from "react";
 
 
-export default class WithStylesContext extends React.Component <any, any> {
+export class UniversalStyleProvider extends React.Component <any, any> {
     static propTypes = {
         children: React.PropTypes.element.isRequired,
         onInsertCss: React.PropTypes.func.isRequired,

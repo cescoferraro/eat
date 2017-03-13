@@ -19,9 +19,8 @@ export const logoutEpic = action$ =>
         .mergeMap(action =>
             Observable.fromPromise(
                 getFirebase().auth().signOut()
-            )
-                .catch(err => {
-                    return Observable.empty()
-                }) .mapTo(push("/"))
+            ).catch(() => {
+                return Observable.empty()
+            }) .mapTo(push("/"))
         );
 

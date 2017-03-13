@@ -5,7 +5,7 @@ import {compose} from "recompose";
 import SizeMe from "react-sizeme";
 import {BlockQuote, Appear, Cite, Deck, Heading, ListItem, List, Quote, Slide, Text} from "spectacle";
 import {JobBarChart} from "./doughnout";
-import {withStyles} from "../../shared/withStyle";
+import {StyleConnect} from "../StyleConnect";
 import {PreentationTheme} from "./presentation.style";
 import {QuoteSlide} from "./quote.slide";
 import {CoverSlide} from "./cover.slide";
@@ -13,7 +13,7 @@ const css = require("./presentation.pcss");
 
 export const Preentation = compose(
     SizeMe(),
-    withStyles(css))
+    StyleConnect(css))
 (({
         jobs,
         app,

@@ -17,7 +17,7 @@ let config = {
 	devtool: require("./extras").devtools,
 	plugins: require("./plugins").client,
 	resolveLoader: require("./extras").resolveLoader,
-	module: require("./client-loaders").loaders,
+	module: require("./loaders").loaders,
 	resolve: require("./extras").resolve,
 };
 

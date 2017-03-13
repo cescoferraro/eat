@@ -4,7 +4,7 @@ module.exports = {
 	name: 'server',
 	target: 'node',
 	entry: {
-		server: [env === "production" ? "./src/server" : "./src/middleware"]
+		server: [env === "production" ? "./src/server" : "./src/shared/middleware"]
 	},
 	output: {
 		path: require('path').join(__dirname, "../../www"),
@@ -16,7 +16,7 @@ module.exports = {
 	stats: require("./extras").stats,
 	plugins: require("./plugins").server,
 	resolveLoader: require("./extras").resolveLoader,
-	module: require("./client-loaders").loaders,
+	module: require("./loaders").loaders,
 	resolve: require("./extras").resolve
 };
 

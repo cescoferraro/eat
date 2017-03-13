@@ -1,11 +1,11 @@
 import * as React from "react";
 import {createAsyncComponent} from "react-async-component";
 import {Route, IndexRoute, Router, Switch, Link} from "react-router-dom";
-import {AsyncHome} from "./containers/home/async";
-import {AsyncLogin} from "./containers/login/async";
-import {AsyncDashboard} from "./containers/dashboard/async";
-import {AsyncAppBar} from "./containers/shell/async";
-import {AsyncToaster} from "./components/Toaster/async";
+import {AsyncHome} from "../../containers/home/async";
+import {AsyncLogin} from "../../containers/login/async";
+import {AsyncDashboard} from "../../containers/dashboard/async";
+import {AsyncAppBar} from "../../containers/shell/async";
+import {AsyncToaster} from "../Toaster/async";
 
 
 export const App = ({userAgent}) => {

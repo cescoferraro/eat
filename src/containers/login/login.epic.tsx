@@ -22,7 +22,7 @@ export const loginEpic = action$ =>
                     .signInWithEmailAndPassword(
                         action.payload.email, action.payload.password)
             )
-                .catch(err => {
+                .catch(() => {
                     return Observable.empty()
                 }) .mapTo(push("/dashboard/jobs"))
         );
