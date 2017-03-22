@@ -4,3 +4,4 @@ dist/
 www/
 vendor/
 /node_modules/
+/src/#*#

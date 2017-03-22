@@ -1,21 +1,21 @@
 import *  as injectTapEventPlugin from "react-tap-event-plugin";
-import {createStore} from "redux";
+import { createStore } from "redux";
 import * as React from "react";
-import {App} from "../components/App";
+import { TideApp } from "../components/App";
 import * as ReactDOMServer from "react-dom/server";
-import {HTML} from "../components/universal/html";
+import { HTML } from "../components/universal/html";
 import createServerRenderContext from "react-router/createServerRenderContext";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import {UniversalStyleProvider} from "../components/UniversalStyleProvider";
-import {StyleRoot} from "radium";
-import {withAsyncComponents} from "react-async-component";
-import {StaticRouter} from "react-router-dom";
+import { UniversalStyleProvider } from "../components/UniversalStyleProvider";
+import { StyleRoot } from "radium";
+import { withAsyncComponents } from "react-async-component";
+import { StaticRouter } from "react-router-dom";
 injectTapEventPlugin();
 
 
-export default  () => (request, response) => {
+export default () => (request, response) => {
     const context = createServerRenderContext();
     const result = context.getResult();
     if (result.redirect) {
@@ -37,10 +37,10 @@ export default  () => (request, response) => {
         let userAgent = request.headers['user-agent'];
         let ServerApp =
             <UniversalStyleProvider onInsertCss={styles => css.push(styles._getCss())}>
-                <MuiThemeProvider muiTheme={getMuiTheme({userAgent: userAgent})}>
+                <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: userAgent })}>
                     <Provider store={the}>
                         <StaticRouter location={request.url} context={context}>
-                            <App userAgent={userAgent}/>
+                            <TideApp userAgent={userAgent} />
                         </StaticRouter>
                     </Provider>
                 </MuiThemeProvider>
@@ -51,13 +51,10 @@ export default  () => (request, response) => {
             .then((result) => {
                 response.send("<!DOCTYPE html>" +
                     ReactDOMServer.renderToStaticMarkup(
-                        <HTML userAgent={userAgent} css={css} result={result}/>
+                        <HTML userAgent={userAgent} css={css} result={result} />
                     ));
             });
 
 
     }
 };
-
-
-

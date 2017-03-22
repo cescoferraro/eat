@@ -1,13 +1,14 @@
-import {tag} from "./shared";
+import { tag } from "./shared";
 import * as React from "react";
 import * as injectTapEventPlugin from "react-tap-event-plugin";
-import {App} from "./components/App";
-import {Renderer} from "./shared/render";
-import {unmountComponentAtNode} from "react-dom";
+import { TideApp } from "./components/App";
+import { Renderer } from "./shared/render";
+import { unmountComponentAtNode } from "react-dom";
 injectTapEventPlugin();
 
 
-Renderer(App({userAgent: navigator.userAgent}));
+
+Renderer(TideApp({ userAgent: navigator.userAgent }));
 
 if (module.hot) {
     module.hot.accept(
@@ -20,6 +21,6 @@ if (module.hot) {
             unmountComponentAtNode(tag);
             const NextEatApp = require("./components/App/index.tsx").App;
             const NewRenderer = require("./shared/render.tsx").Renderer;
-            NewRenderer(NextEatApp({userAgent: navigator.userAgent}));
+            NewRenderer(NextEatApp({ userAgent: navigator.userAgent }));
         });
 }

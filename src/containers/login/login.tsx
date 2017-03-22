@@ -1,13 +1,13 @@
 import * as React from "react";
-import withStyles from "isomorphic-style-loader/lib/withStyles";
-import {compose} from "recompose";
-import {connect} from "react-redux";
-import {TextField} from "redux-form-material-ui";
-import {reduxForm, Field} from "redux-form";
-import {firebaseConnect, dataToJS, getFirebase} from "react-redux-firebase";
-import {push} from "connected-react-router";
+import { compose } from "recompose";
+import { withSyles } from "../../shared/index";
+import { connect } from "react-redux";
+import { TextField } from "redux-form-material-ui";
+import { reduxForm, Field } from "redux-form";
+import { firebaseConnect, dataToJS, getFirebase } from "react-redux-firebase";
+import { push } from "connected-react-router";
 import "rxjs";
-import {APP_ACTIONS} from "../../store/actions";
+import { APP_ACTIONS } from "../../store/actions";
 const css = require('./login.pcss');
 
 export const Login = compose(
@@ -15,42 +15,42 @@ export const Login = compose(
     reduxForm({
         form: 'loginForm'
     }),
-    connect(({app, firebase}) => ({
+    connect(({ app, firebase }) => ({
         app: app,
         firebase: firebase
     }), APP_ACTIONS)
-)(({handleSubmit, firebase, dispatch, LOGIN}) => {
+)(({ handleSubmit, firebase, dispatch, LOGIN }) => {
     return (<div className={css.page}>
         {firebase.get("auth") != null ?
             <div >
                 {redirect(dispatch)}
-                <button onClick={()=>{
+                <button onClick={() => {
                     dispatch(push("/dashboard/jobs"))
                 }}>
                     <h2>JUST GET IN!</h2>
                 </button>
-            </div>:
+            </div> :
             <form onSubmit={handleSubmit(LOGIN.bind(this))}>
                 <Field name="email"
-                       type="email"
-                       floatingLabelText="Email"
-                       required
-                       id="email"
-                       component={TextField}
-                       fullWidth={true}
-                       floatingLabelFixed={true}
-                       hintText="Email"/>
+                    type="email"
+                    floatingLabelText="Email"
+                    required
+                    id="email"
+                    component={TextField}
+                    fullWidth={true}
+                    floatingLabelFixed={true}
+                    hintText="Email" />
                 <Field name="password"
-                       type="password"
-                       id="passwd-login"
-                       required
-                       floatingLabelFixed={true}
-                       floatingLabelText="Password"
-                       fullWidth={true}
-                       component={TextField}
-                       hintText="Password"/>
+                    type="password"
+                    id="passwd-login"
+                    required
+                    floatingLabelFixed={true}
+                    floatingLabelText="Password"
+                    fullWidth={true}
+                    component={TextField}
+                    hintText="Password" />
                 <button
-                    style={{height:"100px",width:"100%"}}
+                    style={{ height: "100px", width: "100%" }}
                     type="submit">VAI
                 </button>
             </form>}
