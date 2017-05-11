@@ -1,6 +1,6 @@
 import * as React from "react";
 import { compose } from "recompose";
-import { withSyles } from "../../shared/index";
+import withStyles from "isomorphic-style-loader/lib/withStyles";
 import { connect } from "react-redux";
 import { TextField } from "redux-form-material-ui";
 import { reduxForm, Field } from "redux-form";
@@ -9,6 +9,7 @@ import { push } from "connected-react-router";
 import "rxjs";
 import { APP_ACTIONS } from "../../store/actions";
 const css = require('./login.pcss');
+
 
 export const Login = compose(
     withStyles(css),
@@ -62,5 +63,3 @@ const redirect = (dispatch) => {
         dispatch(push("/dashboard/jobs"));
     }, 2000)
 };
-
-
